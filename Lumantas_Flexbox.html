@@ -32,11 +32,29 @@
     box-sizing: border-box;
 
     display: flex;
+    flex-direction: row; 
+    gap: 10px;
+  }
+
+  /* --- Main Layout Columns --- */
+
+  /* Left side holds Columns 1-4 */
+  .left-side {
+    flex: 4.4; 
+    display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  /* --- Row Wrappers --- */
+  /* Right side holds Column 5 */
+  .right-side {
+    flex: 1.1; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* --- Left Side Row Wrappers --- */
   
   .band-top-mid {
     display: flex;
@@ -73,9 +91,8 @@
 
   /* --- Individual Blocks via Flex-Grow --- */
 
-  /* Edge columns spanning Rows 1 & 2 */
+  /* Left edge column spanning Rows 1 & 2 */
   .left-red { flex: 1.2; min-width: 0; }
-  .right-white { flex: 1.1; min-width: 0; }
 
   /* Row 1 Inner (Columns 2-4) */
   .top-blue { flex: 1; min-width: 0; }
@@ -85,42 +102,56 @@
   .middle-white { flex: 2; min-width: 0; }
   .middle-brown { flex: 1.2; min-width: 0; }
 
-  /* Row 3 (Bottom Band) */
+  /* Row 3 (Bottom Band, inside Left Side) */
   .bottom-tan { flex: 2.2; min-width: 0; }
   .bottom-blue { flex: 2.2; min-width: 0; }
-  .bottom-red { flex: 1.1; min-width: 0; }
+
+  /* --- Right Side Blocks --- */
+  
+  /* Make right white and bottom red 50/50 in size */
+  .right-white { flex: 1; min-height: 0; }
+  .bottom-red { flex: 1; min-height: 0; }
+  
 </style>
 </head>
 <body>
 
 <div class="layout">
 
-  <!-- Rows 1 & 2 -->
-  <div class="band-top-mid">
-    <div class="red left-red"></div>
+  <!-- LEFT SIDE (Everything except for column 5) -->
+  <div class="left-side">
+    
+    <!-- Rows 1 & 2 -->
+    <div class="band-top-mid">
+      <div class="red left-red"></div>
 
-    <!-- Middle section (Columns 2-4) -->
-    <div class="middle-section">
-      <!-- Row 1 -->
-      <div class="row-top">
-        <div class="blue top-blue"></div>
-        <div class="red top-red"></div>
-      </div>
+      <!-- Middle section (Columns 2-4) -->
+      <div class="middle-section">
+        <!-- Row 1 -->
+        <div class="row-top">
+          <div class="blue top-blue"></div>
+          <div class="red top-red"></div>
+        </div>
 
-      <!-- Row 2 -->
-      <div class="row-mid">
-        <div class="white middle-white"></div>
-        <div class="brown middle-brown"></div>
+        <!-- Row 2 -->
+        <div class="row-mid">
+          <div class="white middle-white"></div>
+          <div class="brown middle-brown"></div>
+        </div>
       </div>
     </div>
 
-    <div class="white right-white"></div>
+    <!-- Row 3 (Bottom) -->
+    <div class="band-bottom">
+      <div class="tan bottom-tan"></div>
+      <div class="blue bottom-blue"></div>
+    </div>
+
   </div>
 
-  <!-- Row 3 (Bottom) -->
-  <div class="band-bottom">
-    <div class="tan bottom-tan"></div>
-    <div class="blue bottom-blue"></div>
+  <!-- RIGHT SIDE (Column 5) -->
+  <div class="right-side">
+    <div class="white right-white"></div>
     <div class="red bottom-red"></div>
   </div>
 
