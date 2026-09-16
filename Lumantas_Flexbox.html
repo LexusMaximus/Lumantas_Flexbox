@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumantas Flexbox Layout</title>
+<style>
+  /* Base Body Styling */
+  body {
+    background-color: #26272b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  /* Colors */
+  .red   { background-color: #c73531; }
+  .blue  { background-color: #00a1d6; }
+  .white { background-color: #e7e6ee; }
+  .brown { background-color: #b59f65; }
+  .tan   { background-color: #ccb97e; }
+
+  /* Main Container Wrapper */
+  .layout {
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    padding: 10px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* --- Row Wrappers --- */
+  
+  .band-top-mid {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex: 2; /* Height proportion for Rows 1 & 2 */
+    min-height: 0;
+  }
+
+  .band-bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex: 0.8; /* Height proportion for Row 3 */
+    min-height: 0;
+  }
+
+  .middle-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 3.2; /* Spans Columns 2, 3, and 4 */
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .row-top, .row-mid {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* --- Individual Blocks via Flex-Grow --- */
+
+  /* Edge columns spanning Rows 1 & 2 */
+  .left-red { flex: 1.2; min-width: 0; }
+  .right-white { flex: 1.1; min-width: 0; }
+
+  /* Row 1 Inner (Columns 2-4) */
+  .top-blue { flex: 1; min-width: 0; }
+  .top-red { flex: 2.2; min-width: 0; }
+
+  /* Row 2 Inner (Columns 2-4) */
+  .middle-white { flex: 2; min-width: 0; }
+  .middle-brown { flex: 1.2; min-width: 0; }
+
+  /* Row 3 (Bottom Band) */
+  .bottom-tan { flex: 2.2; min-width: 0; }
+  .bottom-blue { flex: 2.2; min-width: 0; }
+  .bottom-red { flex: 1.1; min-width: 0; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Rows 1 & 2 -->
+  <div class="band-top-mid">
+    <div class="red left-red"></div>
+
+    <!-- Middle section (Columns 2-4) -->
+    <div class="middle-section">
+      <!-- Row 1 -->
+      <div class="row-top">
+        <div class="blue top-blue"></div>
+        <div class="red top-red"></div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row-mid">
+        <div class="white middle-white"></div>
+        <div class="brown middle-brown"></div>
+      </div>
+    </div>
+
+    <div class="white right-white"></div>
+  </div>
+
+  <!-- Row 3 (Bottom) -->
+  <div class="band-bottom">
+    <div class="tan bottom-tan"></div>
+    <div class="blue bottom-blue"></div>
+    <div class="red bottom-red"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
